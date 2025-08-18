@@ -12,14 +12,15 @@ export default function StaffDashboard() {
   const { data: hotelsData, isLoading: hotelsLoading } = useQuery(["hotels"], getHotels);
 
   if (reservationsLoading || hotelsLoading) return <p>Loading...</p>;
+
+  const reservationColumns = ["ID", "Hotel", "Guest", "Room", "Start Date", "End Date"];
+  const reservationRows = reservationsData?.data?.map(r => ({
     ID: r.reservationId,
     Hotel: r.hotel?.name,
     Guest: `${r.guest?.firstName} ${r.guest?.lastName}`,
     Room: r.room?.name,
     "Start Date": r.startDate,
     "End Date": r.endDate
-  }));
-
   })) || [];
 
   const hotelColumns = ["ID", "Name", "Location", "Total Rooms"];
@@ -29,7 +30,7 @@ export default function StaffDashboard() {
     Location: h.location,
     "Total Rooms": h.rooms?.length || 0
   })) || [];
-  const reservationRows = reservationsData?.data?.map(r => ({
+
   return (
     <DashboardLayout title="Staff Dashboard">
       <div className="mb-6">
