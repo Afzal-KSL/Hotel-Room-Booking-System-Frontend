@@ -15,14 +15,24 @@ export default function Navbar() {
         {user && (
           <div className="flex space-x-4">
             {user.role === "ADMIN" && (
-              <Link to="/dashboard/admin" className="hover:text-blue-200 transition">
-                Admin Panel
-              </Link>
+              <>
+                <Link to="/dashboard/admin" className="hover:text-blue-200 transition">
+                  Admin Panel
+                </Link>
+                <Link to="/home" className="hover:text-blue-200 transition">
+                  Browse Hotels
+                </Link>
+              </>
             )}
             {user.role === "STAFF" && (
-              <Link to="/dashboard/staff" className="hover:text-blue-200 transition">
-                Staff Panel
-              </Link>
+              <>
+                <Link to="/dashboard/staff" className="hover:text-blue-200 transition">
+                  Staff Panel
+                </Link>
+                <Link to="/home" className="hover:text-blue-200 transition">
+                  Browse Hotels
+                </Link>
+              </>
             )}
             {user.role === "GUEST" && (
               <Link to="/home" className="hover:text-blue-200 transition">

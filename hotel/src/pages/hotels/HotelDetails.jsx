@@ -213,8 +213,9 @@ export default function HotelDetails() {
                       {room.isAvailable ? (
                         <div className="text-center space-y-4">
                           <div className="bg-blue-50 p-4 rounded-lg">
-                            <p className="text-2xl font-bold text-blue-700">₹2,999</p>
+                            <p className="text-2xl font-bold text-blue-700">₹{(2999 + (room.floor * 200)).toLocaleString()}</p>
                             <p className="text-gray-600 text-sm">per night</p>
+                            <p className="text-xs text-gray-500">Floor {room.floor} • Room {room.number}</p>
                           </div>
                           <button
                             onClick={() => handleBookRoom(room)}

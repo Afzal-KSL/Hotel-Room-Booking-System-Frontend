@@ -32,13 +32,16 @@ export default function Login() {
     // Role-based navigation
     if (res.data.role === "GUEST") {
       if (res.data.hasProfile === false) {
+        alert("Welcome! Please complete your profile to start booking hotels.");
         navigate("/profile");
       } else {
         navigate("/home");
       }
     } else if (res.data.role === "ADMIN") {
+      alert("Welcome back, Administrator!");
       navigate("/dashboard/admin");
     } else if (res.data.role === "STAFF") {
+      alert("Welcome back, Staff Member!");
       navigate("/dashboard/staff");
     }
 

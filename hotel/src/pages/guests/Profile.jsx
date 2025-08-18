@@ -20,6 +20,7 @@ export default function Profile() {
     setLoading(true);
     try {
       await axiosInstance.post("/profile/guest", form);
+      alert("Profile created successfully! You can now browse and book hotels.");
       navigate("/home");
     } catch (error) {
       console.error("Error creating profile:", error);

@@ -57,11 +57,20 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-blue-50 py-10 relative px-6">
       {/* Profile avatar top-right corner */}
-      <div className="fixed top-6 right-8 z-50">
+      <div className="fixed top-6 right-8 z-50 flex items-center space-x-4">
+        <div className="bg-white px-4 py-2 rounded-lg shadow-md">
+          <span className="text-sm text-gray-600">Welcome back!</span>
+        </div>
         <GuestProfileMenu />
       </div>
 
       <div className="max-w-7xl mx-auto">
+        {/* Welcome Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-blue-700 mb-2">Find Your Perfect Stay</h1>
+          <p className="text-gray-600 text-lg">Discover amazing hotels and book your next adventure</p>
+        </div>
+
         {/* Search bar */}
         <div className="flex justify-center mb-8">
           <input
