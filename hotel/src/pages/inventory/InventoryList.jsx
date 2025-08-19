@@ -10,9 +10,10 @@ import { useState } from "react";
 
 export default function InventoryList() {
   const hotelId = 1; // Placeholder. Could be dynamic depending on logged user’s assigned hotel
-  const { data, isLoading } = useQuery(["inventory", hotelId], () =>
-    getInventoryByHotel(hotelId)
-  );
+  const { data, isLoading } = useQuery({
+    queryKey: ["inventory", hotelId],
+    queryFn: () => getInventoryByHotel(hotelId)
+  });
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const pageSize = 5;

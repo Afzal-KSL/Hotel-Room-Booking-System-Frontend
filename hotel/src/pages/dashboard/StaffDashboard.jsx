@@ -6,10 +6,11 @@ import Table from "../../components/Table";
 import { useState } from "react";
 
 export default function StaffDashboard() {
-  const [activeTab, setActiveTab] = useState("reservations");
-  
-  const { data: reservationsData, isLoading: reservationsLoading } = useQuery(["reservations"], getReservations);
-  const { data: hotelsData, isLoading: hotelsLoading } = useQuery(["hotels"], getHotels);
+  const { data, isLoading } = useQuery({
+    queryKey: ["reservations"],
+    queryFn: getReservations,
+    });
+  if (isLoading) return <p>Loading...</p>;
 
   if (reservationsLoading || hotelsLoading) return <p>Loading...</p>;
 

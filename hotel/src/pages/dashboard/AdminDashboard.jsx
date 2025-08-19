@@ -6,16 +6,11 @@ import Table from "../../components/Table";
 import { useState } from "react";
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState("hotels");
-  
-  const { data: hotelsData, isLoading: hotelsLoading } = useQuery(["hotels"], getHotels);
-  const { data: usersData, isLoading: usersLoading } = useQuery(["users"], () => 
-    Promise.all([
-      getUsersByRole("GUEST"),
-      getUsersByRole("STAFF"),
-      getUsersByRole("ADMIN")
-    ])
-  );
+  const { data, isLoading } = useQuery({
+  queryKey: ["hotels"],
+  queryFn: getHotels,
+  });
+  if (isLoading) return <p>Loading...</p>;
 
   if (hotelsLoading || usersLoading) return <p>Loading...</p>;
 

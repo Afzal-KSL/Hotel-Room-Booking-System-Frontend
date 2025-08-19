@@ -10,9 +10,14 @@ import { useState } from "react";
 
 export default function RoomList() {
   const queryClient = useQueryClient();
-  const { data, isLoading } = useQuery(["rooms"], getRooms);
-  const deleteMutation = useMutation(deleteRoom, {
-    onSuccess: () => queryClient.invalidateQueries(["rooms"]),
+  const { data, isLoading } = useQuery({
+    queryKey: ["rooms"],
+    queryFn: getRooms
+  });
+  const deleteMutation = useMutation({
+      mutationFn: deleteRoom,
+      onSuccess: () => { queryClient.invalidateQueries({ queryKey: ["rooms"] });
+    },
   });
 
   const [search, setSearch] = useState("");

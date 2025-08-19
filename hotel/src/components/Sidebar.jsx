@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { FaHotel, FaBed, FaList, FaChartLine, FaCogs, FaTags, FaClipboardList } from "react-icons/fa";
+import { FaHotel, FaBed, FaList, FaChartLine, FaCogs, FaTags, FaClipboardList, FaUsers } from 'react-icons/fa';
 
 export default function Sidebar() {
   const { user } = useAuth();
@@ -10,6 +10,7 @@ export default function Sidebar() {
 const menus = {
   ADMIN: [
     { name: "Dashboard", path: "/dashboard/admin", icon: <FaChartLine /> },
+    { name: 'Users', path: '/users', icon: <FaUsers /> },
     { name: "Hotels", path: "/hotels-list", icon: <FaHotel /> },
     { name: "Rooms", path: "/rooms-list", icon: <FaBed /> },
     { name: "Reservations", path: "/reservations-list", icon: <FaClipboardList /> },

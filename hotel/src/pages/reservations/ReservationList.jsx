@@ -9,10 +9,15 @@ import { useState } from "react";
 
 export default function ReservationList() {
   const queryClient = useQueryClient();
-  const { data, isLoading } = useQuery(["reservations"], getReservations);
+  const { data, isLoading } = useQuery({
+    queryKey: ["reservations"],
+    queryFn: getReservations,
+  });
 
-  const deleteMutation = useMutation(deleteReservation, {
-    onSuccess: () => queryClient.invalidateQueries(["reservations"]),
+  const deleteMutation = useMutation({
+      mutationFn: deleteReservation,
+      onSuccess: () => { queryClient.invalidateQueries({ queryKey: ["reservations"]});
+    },
   });
 
   const [search, setSearch] = useState("");

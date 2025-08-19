@@ -9,7 +9,10 @@ import Button from "../../components/Button";
 import { useState } from "react";
 
 export default function RateList() {
-  const { data, isLoading } = useQuery(["rates"], getRates);
+  const { data, isLoading } = useQuery({
+    queryKey: ["rates"],
+    queryFn: getRates,
+  });
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const pageSize = 5;
